@@ -24,7 +24,6 @@ const AddMenu = () => {
   return (
     <div>
       <Nav />
-      <div className="w-5/6 mx-auto"></div>
       <section className="w-5/6 mx-auto py-36">
         <div className="flex items-center gap-5 mb-10">
           <div className="w-1 h-12 bg-[#EFC81A]"></div>
@@ -34,7 +33,7 @@ const AddMenu = () => {
         <form action="" className="flex flex-col items-end gap-5 mt-10">
           <div className="flex w-full gap-5">
             <div className="flex flex-col w-1/3 gap-3 mx-auto">
-              <div className="w-full mx-auto bg-[#F6F6F6] border-2 border-[#00000020] rounded-md h-96 flex items-center justify-center">
+              <div className="w-full mx-auto bg-[#F6F6F6] border-2 border-[#00000020] rounded-md h-80 flex items-center justify-center">
                 {imageSrc ? (
                   <img src={imageSrc} className="object-cover w-full h-full" />
                 ) : (
@@ -57,40 +56,47 @@ const AddMenu = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col w-2/3 gap-3">
+            <div className="flex flex-col w-2/3 gap-5">
               <input
                 type="text"
                 placeholder="Title"
-                className="px-4 py-3 text-2xl bg-[#F6F6F6] rounded-md focus:outline-none"
+                className="px-4 py-3 text-xl bg-[#F6F6F6] rounded-md focus:outline-none"
+              />
+              <input
+                type="text"
+                placeholder="Ingredients"
+                className="px-4 py-3 text-xl bg-[#F6F6F6] rounded-md focus:outline-none"
               />
               <textarea
                 name=""
                 id=""
-                className="px-4 py-3 text-xl bg-[#F6F6F6] rounded-md resize-none h-96 focus:outline-none"
-                placeholder="Ingredients & Description"
+                className="px-4 py-3 text-xl bg-[#F6F6F6] rounded-md resize-none h-56 focus:outline-none"
+                placeholder="Description"
               ></textarea>
-              <div className="flex gap-10 text-xl">
+              <div className="flex gap-4 text-xl">
                 <label htmlFor="">Category:</label>
-                <div className="flex gap-3">
-                  <input type="radio" name="category" id="salad" />
-                  <label htmlFor="salad">Salad</label>
-                </div>
-                <div className="flex gap-3">
-                  <input type="radio" name="category" id="appetizer" />
-                  <label htmlFor="appetizer">Appetizer</label>
-                </div>
-                <div className="flex gap-3">
-                  <input type="radio" name="category" id="main-course" />
-                  <label htmlFor="main-course">Main Course</label>
-                </div>
-                <div className="flex gap-3">
-                  <input type="radio" name="category" id="dessert" />
-                  <label htmlFor="dessert">Dessert</label>
+                <div className="flex gap-8">
+                  <div className="flex gap-2">
+                    <input type="radio" name="category" id="salad" />
+                    <label htmlFor="salad">Salad</label>
+                  </div>
+                  <div className="flex gap-3">
+                    <input type="radio" name="category" id="appetizer" />
+                    <label htmlFor="appetizer">Appetizer</label>
+                  </div>
+                  <div className="flex gap-3">
+                    <input type="radio" name="category" id="main-course" />
+                    <label htmlFor="main-course">Main Course</label>
+                  </div>
+                  <div className="flex gap-3">
+                    <input type="radio" name="category" id="dessert" />
+                    <label htmlFor="dessert">Dessert</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <button className="bg-[#EFC81A] py-2 text-xl rounded-md text-white px-10">
+          <button className="bg-[#EFC81A] py-2 min-w-80 text-xl rounded-md text-white px-10">
             Submit Recipe
           </button>
         </form>
