@@ -1,0 +1,53 @@
+[
+  { "Name": "admin", "Email": "admin@recipes.com", "Password": "admin" },
+  {
+    "Name": "Alice Johnson",
+    "Email": "alice.johnson@example.com",
+    "Password": "Password123!"
+  },
+  {
+    "Name": "Bob Smith",
+    "Email": "bob.smith@example.com",
+    "Password": "Secret456#"
+  },
+  {
+    "Name": "Emily Davis",
+    "Email": "emily.davis@example.com",
+    "Password": "Secure789$"
+  },
+  {
+    "Name": "John Doe",
+    "Email": "john.doe@example.com",
+    "Password": "Hidden987*"
+  },
+  {
+    "Name": "Sarah Parker",
+    "Email": "sarah.parker@example.com",
+    "Password": "Safe321@"
+  },
+  {
+    "Name": "Michael Brown",
+    "Email": "michael.brown@example.com",
+    "Password": "Protected654%"
+  },
+  {
+    "Name": "Emma Wilson",
+    "Email": "emma.wilson@example.com",
+    "Password": "Confidential135!"
+  },
+  {
+    "Name": "David Moore",
+    "Email": "david.moore@example.com",
+    "Password": "Private246#"
+  },
+  {
+    "Name": "Olivia Taylor",
+    "Email": "olivia.taylor@example.com",
+    "Password": "Secretive579@"
+  },
+  {
+    "Name": "James Anderson",
+    "Email": "james.anderson@example.com",
+    "Password": "Hidden123$"
+  }
+]
