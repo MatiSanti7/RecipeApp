@@ -1,10 +1,16 @@
-import Nav from "./Nav";
-import Footer from "./Footer";
-import "./styles/home.css";
+import Nav from "../Nav";
+import Footer from "../Footer";
+import "../styles/home.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleFill = () => {
+    setIsActive(!isActive);
+  };
 
   const toggleVisibility = () => {
     if (window.scrollY > 500) {
@@ -37,7 +43,12 @@ const Home = () => {
               <h1 className="text-7xl text-balance text-[#2E266F] leading-tight">
                 Discover Recipe & Delicious Food
               </h1>
-              <i className="text-4xl fa-regular fa-bookmark hover:text-[#EFC81A] cursor-pointer"></i>
+              <i
+                className={`${
+                  isActive ? "fa-solid" : "fa-regular"
+                } text-4xl fa-bookmark hover:text-[#EFC81A] cursor-pointer transition-all duration-300`}
+                onClick={handleFill}
+              ></i>
             </div>
             <form className="p-2 pl-6 border-2 border-[#EFC81A] rounded-full flex w-min gap-5">
               <input
@@ -120,22 +131,34 @@ const Home = () => {
             </h2>
           </div>
           <div className="flex items-center justify-between">
-            <a href="" className="flex flex-col gap-4">
+            <Link
+              to="/category/salad"
+              className="flex flex-col gap-4 hover:text-[#EFC81A] "
+            >
               <img src="./src/assets/img/image-4.png" alt="" />
               <small className="text-2xl text-center">Salads</small>
-            </a>
-            <a href="" className="flex flex-col gap-4">
+            </Link>
+            <Link
+              to="/category/appetizer"
+              className="flex flex-col gap-4 hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-5.png" alt="" />
               <small className="text-2xl text-center">Appetizer</small>
-            </a>
-            <a href="" className="flex flex-col gap-4">
+            </Link>
+            <Link
+              to="/category/maincourse"
+              className="flex flex-col gap-4 hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-6.png" alt="" />
               <small className="text-2xl text-center">Main Course</small>
-            </a>
-            <a href="" className="flex flex-col gap-4">
+            </Link>
+            <Link
+              to="/category/dessert"
+              className="flex flex-col gap-4 hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-7.png" alt="" />
               <small className="text-2xl text-center">Dessert</small>
-            </a>
+            </Link>
           </div>
         </section>
         <section className="mb-20">
@@ -144,22 +167,34 @@ const Home = () => {
             <h2 className="text-4xl">Check Out By Region !</h2>
           </div>
           <div className="flex items-center justify-between">
-            <a href="" className="flex flex-col gap-4">
+            <Link
+              to="/category/europe"
+              className="flex flex-col gap-4  hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-8.png" alt="" />
-              <small className="text-2xl text-center">Salads</small>
-            </a>
-            <a href="" className="flex flex-col gap-4">
+              <small className="text-2xl text-center">Europe</small>
+            </Link>
+            <Link
+              to="/category/america"
+              className="flex flex-col gap-4  hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-9.png" alt="" />
-              <small className="text-2xl text-center">Appetizer</small>
-            </a>
-            <a href="" className="flex flex-col gap-4">
+              <small className="text-2xl text-center">America</small>
+            </Link>
+            <Link
+              to="/category/asia"
+              className="flex flex-col gap-4  hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-10.png" alt="" />
-              <small className="text-2xl text-center">Main Course</small>
-            </a>
-            <a href="" className="flex flex-col gap-4">
+              <small className="text-2xl text-center">Asia</small>
+            </Link>
+            <Link
+              to="/category/middleeast"
+              className="flex flex-col gap-4  hover:text-[#EFC81A]"
+            >
               <img src="./src/assets/img/image-11.png" alt="" />
-              <small className="text-2xl text-center">Dessert</small>
-            </a>
+              <small className="text-2xl text-center">Middle East</small>
+            </Link>
           </div>
         </section>
       </div>
