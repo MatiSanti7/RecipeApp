@@ -1,12 +1,29 @@
 import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Nav = () => {
-  const [activePath, setActivePath] = useState(window.location.pathname);
+  const location = useLocation();
+  const [activePath, setActivePath] = useState(location.pathname);
+  const navigate = useNavigate();
+  const [showLogout, setShowLogout] = useState(false);
 
   const isActive = (path) => (activePath === path ? "active" : "");
 
   const handleNavLinkClick = (path) => {
     setActivePath(path);
+  };
+
+  const handleLogoutClick = () => {
+    setShowLogout(true);
+  };
+
+  const handleCancelLogout = () => {
+    setShowLogout(false);
+  };
+
+  const handleConfirmLogout = () => {
+    setShowLogout(false);
+    navigate("/login");
   };
 
   return (
@@ -20,23 +37,21 @@ const Nav = () => {
                 : ""
             }`}
           >
-            <a
-              href="/home"
-              onClick={() =>
-                handleNavLinkClick("/home") || handleNavLinkClick("/")
-              }
-            >
+            <Link to="/home" onClick={() => handleNavLinkClick("/home")}>
               Home
-            </a>
+            </Link>
           </li>
           <li
             className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
               isActive("/add-menu") ? "bg-white text-[#EFC81A] rounded-md" : ""
             }`}
           >
-            <a href="/add-menu" onClick={() => handleNavLinkClick("/add-menu")}>
+            <Link
+              to="/add-menu"
+              onClick={() => handleNavLinkClick("/add-menu")}
+            >
               Add Menu
-            </a>
+            </Link>
           </li>
           <li
             className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
@@ -45,29 +60,53 @@ const Nav = () => {
                 : ""
             }`}
           >
-            <a
-              href="/search-menu"
+            <Link
+              to="/search-menu"
               onClick={() => handleNavLinkClick("/search-menu")}
             >
               Search Menu
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="flex items-center gap-4">
-          <a href="/profile">
+          <Link to="/profile">
             <i
               className="text-4xl fa-regular fa-circle-user"
               aria-hidden="true"
             ></i>
-          </a>
-          <div className="flex flex-col">
+          </Link>
+          <div className="flex flex-col items-start">
             <strong>User Name</strong>
-            <a href="#" className="underline">
+            <button className="underline" onClick={handleLogoutClick}>
               Logout
-            </a>
+            </button>
           </div>
         </div>
       </div>
+      {showLogout && (
+        <div className="absolute top-0 w-full h-screen bg-[#00000040] flex items-center justify-center">
+          <div className="flex flex-col py-8 bg-white rounded-lg ">
+            <strong className="text-[#EFC81A] text-center text-2xl font-medium mx-14">
+              Are you sure you want to logout?
+            </strong>
+            <hr className="my-4" />
+            <div className="flex gap-5 mx-auto">
+              <button
+                className="text-[#EFC81A] w-24 py-1"
+                onClick={handleCancelLogout}
+              >
+                Cancel
+              </button>
+              <button
+                className="w-24 py-1 text-center text-white bg-red-600 rounded-md"
+                onClick={handleConfirmLogout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
