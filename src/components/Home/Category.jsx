@@ -3,15 +3,16 @@ import Footer from "../Footer";
 import PropTypes from "prop-types";
 import recipesData from "../../assets/data/recipes.json";
 import users from "../../assets/data/users.json";
+import { useLocation } from "react-router-dom";
 
 const Category = ({ category }) => {
   let recipes = [];
-  if (
+  let isCategoryRegion =
     category == "europe" ||
     category == "america" ||
     category == "asia" ||
-    category == "middleeast"
-  ) {
+    category == "middleeast";
+  if (isCategoryRegion) {
     recipes = recipesData.recipes.filter((r) => {
       return r.region == category;
     });
@@ -21,13 +22,39 @@ const Category = ({ category }) => {
     });
   }
 
+  const location = useLocation();
+
+  const getHeaderText = () => {
+    const path = location.pathname;
+    switch (path) {
+      case "/category/europe":
+        return "European Elegance: A Culinary Journey Awaits!";
+      case "/category/america":
+        return "All-American Favorites: Taste the USA!";
+      case "/category/asia":
+        return "Asian Delights: Discover Far Eastern Flavors!";
+      case "/category/middleeast":
+        return "Middle Eastern Marvels: Explore Exotic Spices!";
+      case "/category/salad":
+        return "Have A Safe Diet !!!";
+      case "/category/appetizer":
+        return "Savor the Appetizer: Unwrap Flavorful Beginnings !!!";
+      case "/category/maincourse":
+        return "Main Course Magic: Where Every Bite Tells a Delicious Story !!!";
+      case "/category/dessert":
+        return "Sweet Endings, Happy Beginnings: Indulge in Dessert Delights !!!";
+      default:
+        return "Have A Safe Diet !!!";
+    }
+  };
+
   return (
     <div>
       <Nav />
       <section className="w-5/6 pt-40 pb-16 mx-auto">
         <div className="flex items-center gap-5 mb-10">
           <div className="w-1 h-12 bg-[#EFC81A]"></div>
-          <h1 className="text-4xl">Have A Safe Diet !!!</h1>
+          <h1 className="text-4xl">{getHeaderText()}</h1>
         </div>
         <hr className="h-1 w-full bg-[#EFC81A] my-12" />
         <div className="flex flex-col gap-8">
