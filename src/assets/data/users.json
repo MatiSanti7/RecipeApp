@@ -1,49 +1,63 @@
 [
-  { "Name": "admin", "Email": "admin@recipes.com", "Password": "admin" },
+  {
+    "Name": "Matias Santillán",
+    "Email": "admin@recipes.com",
+    "Password": "admin",
+    "Phone": "1234567890"
+  },
   {
     "Name": "Alice Johnson",
     "Email": "alice.johnson@example.com",
-    "Password": "Password123!"
+    "Password": "Password123!",
+    "Phone": "1234567890"
   },
   {
     "Name": "Bob Smith",
     "Email": "bob.smith@example.com",
-    "Password": "Secret456#"
+    "Password": "Secret456#",
+    "Phone": "1234567890"
   },
   {
     "Name": "Emily Davis",
     "Email": "emily.davis@example.com",
-    "Password": "Secure789$"
+    "Password": "Secure789$",
+    "Phone": "1234567890"
   },
   {
     "Name": "John Doe",
     "Email": "john.doe@example.com",
-    "Password": "Hidden987*"
+    "Password": "Hidden987*",
+    "Phone": "1234567890"
   },
   {
     "Name": "Sarah Parker",
     "Email": "sarah.parker@example.com",
-    "Password": "Safe321@"
+    "Password": "Safe321@",
+    "Phone": "1234567890"
   },
   {
     "Name": "Michael Brown",
     "Email": "michael.brown@example.com",
-    "Password": "Protected654%"
+    "Password": "Protected654%",
+    "Phone": "1234567890"
   },
   {
     "Name": "Emma Wilson",
     "Email": "emma.wilson@example.com",
-    "Password": "Confidential135!"
+    "Password": "Confidential135!",
+    "Phone": "1234567890"
   },
   {
     "Name": "David Moore",
     "Email": "david.moore@example.com",
-    "Password": "Private246#"
+    "Password": "Private246#",
+    "Phone": "1234567890"
   },
   {
     "Name": "Olivia Taylor",
     "Email": "olivia.taylor@example.com",
-    "Password": "Secretive579@"
+    "Password": "Secretive579@",
+    "Phone": "1234567890"
   },
   {
     "Name": "James Anderson",
