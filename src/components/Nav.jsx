@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import users from "../assets/data/users.json";
 
 const Nav = () => {
   const location = useLocation();
@@ -30,43 +31,42 @@ const Nav = () => {
     <nav className="bg-[#EFC81A] fixed flex justify-center w-full py-4 z-10">
       <div className="top-0 flex items-center justify-between w-4/5">
         <ul className="flex gap-6">
-          <li
-            className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
-              isActive("/") || isActive("/home")
-                ? "bg-white text-[#EFC81A] rounded-md"
-                : ""
-            }`}
-          >
-            <Link to="/home" onClick={() => handleNavLinkClick("/home")}>
+          <Link to="/home" onClick={() => handleNavLinkClick("/home")}>
+            <li
+              className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
+                isActive("/") || isActive("/home")
+                  ? "bg-white text-[#EFC81A] rounded-md"
+                  : ""
+              }`}
+            >
               Home
-            </Link>
-          </li>
-          <li
-            className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
-              isActive("/add-menu") ? "bg-white text-[#EFC81A] rounded-md" : ""
-            }`}
-          >
-            <Link
-              to="/add-menu"
-              onClick={() => handleNavLinkClick("/add-menu")}
+            </li>
+          </Link>
+          <Link to="/add-menu" onClick={() => handleNavLinkClick("/add-menu")}>
+            <li
+              className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
+                isActive("/add-menu")
+                  ? "bg-white text-[#EFC81A] rounded-md"
+                  : ""
+              }`}
             >
               Add Menu
-            </Link>
-          </li>
-          <li
-            className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
-              isActive("/search-menu")
-                ? "bg-white text-[#EFC81A] rounded-md"
-                : ""
-            }`}
+            </li>
+          </Link>
+          <Link
+            to="/search-menu"
+            onClick={() => handleNavLinkClick("/search-menu")}
           >
-            <Link
-              to="/search-menu"
-              onClick={() => handleNavLinkClick("/search-menu")}
+            <li
+              className={`text-center px-5 py-2 hover:bg-white hover:text-[#EFC81A] hover:rounded-md transition-all duration-300 ${
+                isActive("/search-menu")
+                  ? "bg-white text-[#EFC81A] rounded-md"
+                  : ""
+              }`}
             >
               Search Menu
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
         <div className="flex items-center gap-4">
           <Link to="/profile">
@@ -76,7 +76,7 @@ const Nav = () => {
             ></i>
           </Link>
           <div className="flex flex-col items-start">
-            <strong>User Name</strong>
+            <strong>{users[0].Name}</strong>
             <button className="underline" onClick={handleLogoutClick}>
               Logout
             </button>
