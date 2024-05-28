@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import recipesData from "../assets/data/recipes.json";
 import users from "../assets/data/users.json";
 
-const recipesPerPage = 7;
+const recipesPerPage = 4;
 const SearchMenu = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState(() => {
@@ -123,17 +123,22 @@ const SearchMenu = () => {
                     </ul>
                     <p className="text-lg">{recipe.description}</p>
                   </div>
-                  <div className="flex gap-10">
+                  <div className="flex gap-10 mt-8">
                     <div className="flex items-center gap-2 text-xl">
                       <i
-                        className="cursor-pointer fa fa-heart-o hover:text-red-600"
-                        aria-hidden="true"
+                        className={`cursor-pointer fa-heart ${
+                          recipe.liked ? "fa-solid text-red-600" : "fa-regular"
+                        }`}
                       ></i>
                       <small>Like Recipe</small>
                     </div>
                     <div className="flex items-center gap-2 text-xl">
                       <i
-                        className="fa fa-bookmark-o hover:text-[#EFC81A] cursor-pointer"
+                        className={`fa fa-bookmark ${
+                          recipe.bookmarked
+                            ? "fa-solid text-[#EFC81A]"
+                            : "fa-regular"
+                        }  cursor-pointer`}
                         aria-hidden="true"
                       ></i>
                       <small>Bookmark Recipe</small>
