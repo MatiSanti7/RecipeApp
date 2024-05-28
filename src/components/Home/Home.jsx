@@ -8,6 +8,15 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
+  const goSearch = (e) => {
+    e.preventDefault();
+    const search = document.getElementById("search").value;
+    if (search) {
+      localStorage.setItem("searchQuery", search);
+      window.location.href = `/search-menu`;
+    }
+  };
+
   const handleFill = () => {
     setIsActive(!isActive);
   };
@@ -50,13 +59,18 @@ const Home = () => {
                 onClick={handleFill}
               ></i>
             </div>
-            <form className="p-2 pl-6 border-2 border-[#EFC81A] rounded-full flex w-min gap-5">
+            <form
+              className="p-2 pl-6 border-2 border-[#EFC81A] rounded-full flex w-min gap-5"
+              onSubmit={goSearch}
+            >
               <input
-                type="text"
+                type="search"
+                name="search"
+                id="search"
                 placeholder="Search Your Favorite Food"
                 className="w-[470px] text-2xl focus:outline-none placeholder:opacity-30"
               />
-              <button>
+              <button type="submit">
                 <i className="p-4 text-2xl fa-solid fa-arrow-right bg-[#EDC81A] rounded-full text-white"></i>
               </button>
             </form>

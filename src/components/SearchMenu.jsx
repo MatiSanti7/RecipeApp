@@ -1,31 +1,94 @@
+import { useState, useRef, useEffect } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import recipesData from "../assets/data/recipes.json";
 import users from "../assets/data/users.json";
 
+const recipesPerPage = 7;
 const SearchMenu = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTermConfirmed, setSearchTermConfirmed] = useState("");
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const searchQuery = localStorage.getItem("searchQuery");
+    if (searchQuery) {
+      setSearchTerm(searchQuery);
+      setSearchTermConfirmed(searchQuery);
+    }
+    const filteredRecipes = recipesData.recipes.filter((recipe) => {
+      return (
+        recipe.title &&
+        recipe.title.toLowerCase().includes(searchTermConfirmed.toLowerCase())
+      );
+    });
+    setFilteredRecipes(filteredRecipes);
+    setCurrentPage(1);
+  }, [searchTermConfirmed]);
+
+  const indexOfLast = currentPage * recipesPerPage;
+  const indexOfFirst = indexOfLast - recipesPerPage;
+  let currentRecipes = filteredRecipes.slice(indexOfFirst, indexOfLast);
+
+  const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage) - 1;
+
+  const scrollToTop = () => {
+    sectionRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const nextPage = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
+    scrollToTop();
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    scrollToTop();
+  };
+
+  const setPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    scrollToTop();
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearchTermConfirmed(searchTerm);
+  };
+
   return (
     <div>
       <Nav />
-      <section className="w-5/6 pt-40 pb-16 mx-auto">
+      <section className="w-5/6 pt-40 pb-16 mx-auto" ref={sectionRef}>
         <div className="flex items-center gap-5 mb-10">
           <div className="w-1 h-12 bg-[#EFC81A]"></div>
           <h1 className="text-4xl">Explore Your Cravings Here !!</h1>
         </div>
-        <div className="flex items-center gap-5 ">
+        <form className="flex items-center gap-5" onSubmit={handleSearchSubmit}>
           <input
-            type="text"
-            name=""
-            id=""
-            className="w-1/3 text-xl border-2 border-[#EFC81A] rounded-md focus:outline-none py-3 px-5"
+            type="search"
+            name="search"
+            id="search"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="w-96 text-xl border-2 border-[#EFC81A] rounded-md focus:outline-none py-3 px-5"
           />
-          <button className="bg-[#EFC81A] text-xl px-8 rounded-md text-white py-3 border-[#EFC81A] border-2">
+          <button
+            type="submit"
+            className="bg-[#EFC81A] text-xl px-8 rounded-md text-white py-3 border-[#EFC81A] border-2"
+          >
             Search
           </button>
-        </div>
+        </form>
         <hr className="h-1 w-full bg-[#EFC81A] my-12" />
         <div className="flex flex-col gap-8">
-          {recipesData.recipes.map((recipe, key) => {
+          {currentRecipes.map((recipe, key) => {
             return (
               <div key={key} className="flex h-56 gap-16">
                 <img
@@ -75,6 +138,44 @@ const SearchMenu = () => {
               </div>
             );
           })}
+        </div>
+        <div className="flex flex-col items-center justify-between gap-6 py-10 md:flex-row md:gap-0">
+          <button
+            onClick={prevPage}
+            disabled={currentPage === 1}
+            className={`py-1 2xl:text-2xl md:text-lg text-xl px-7 rounded-3xl text-neutral-400 ${
+              currentPage === 1 ? "cursor-not-allowed opacity-25" : ""
+            }`}
+          >
+            <i className="mr-5 fa-solid fa-arrow-left"></i>
+            Previous
+          </button>
+          <ul className="flex gap-4">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li key={index}>
+                <button
+                  onClick={() => setPage(index + 1)}
+                  className={`2xl:text-2xl md:text-lg text-xl w-10 h-10 ${
+                    currentPage === index + 1
+                      ? "font-bold bg-[#EFC81A] text-white rounded-md"
+                      : "font-normal "
+                  } `}
+                >
+                  {index + 1}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === totalPages}
+            className={`py-1 2xl:text-2xl md:text-lg text-xl px-7 rounded-3xl text-neutral-400 ${
+              currentPage === totalPages ? "cursor-not-allowed opacity-25" : ""
+            }`}
+          >
+            Next
+            <i className="ml-5 fa-solid fa-arrow-right"></i>
+          </button>
         </div>
       </section>
       <Footer />
