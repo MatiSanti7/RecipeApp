@@ -96,7 +96,10 @@ const AddMenu = () => {
               </div>
             </div>
           </div>
-          <button className="bg-[#EFC81A] py-2 min-w-80 text-xl rounded-md text-white px-10">
+          <button
+            className="bg-[#EFC81A] py-2 min-w-80 text-xl rounded-md text-white px-10 cursor-not-allowed opacity-40"
+            disabled
+          >
             Submit Recipe
           </button>
         </form>
