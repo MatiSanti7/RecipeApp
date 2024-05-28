@@ -1,8 +1,8 @@
 {
   "recipes": [
     {
-      "liked": "false",
-      "bookmarked": "false",
+      "liked": false,
+      "bookmarked": false,
       "image": "../src/assets/img/image-1.png",
       "title": "Crispy Caesar Salad",
       "ingredients": ["Romaine Lettuce", "Parmesan Cheese", "Caesar Dressing"],
@@ -12,8 +12,8 @@
       "author": 5
     },
     {
-      "liked": "false",
-      "bookmarked": "true",
+      "liked": false,
+      "bookmarked": true,
       "image": "../src/assets/img/image-2.png",
       "title": "Bruschetta",
       "ingredients": ["Tomatoes", "Basil", "Garlic", "Olive Oil"],
@@ -23,8 +23,8 @@
       "author": 1
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-3.png",
       "title": "Grilled Chicken Skewers",
       "ingredients": ["Chicken Breast", "Bell Peppers", "Onions", "BBQ Sauce"],
@@ -34,8 +34,8 @@
       "author": 4
     },
     {
-      "liked": "false",
-      "bookmarked": "false",
+      "liked": false,
+      "bookmarked": false,
       "image": "../src/assets/img/image-4.png",
       "title": "Chocolate Lava Cake",
       "ingredients": ["Dark Chocolate", "Butter", "Eggs", "Sugar", "Flour"],
@@ -45,8 +45,8 @@
       "author": 2
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-5.png",
       "title": "Greek Salad",
       "ingredients": ["Cucumber", "Tomato", "Feta Cheese", "Olives"],
@@ -56,8 +56,8 @@
       "author": 6
     },
     {
-      "liked": "false",
-      "bookmarked": "false",
+      "liked": false,
+      "bookmarked": false,
       "image": "../src/assets/img/image-6.png",
       "title": "Spring Rolls",
       "ingredients": ["Rice Paper", "Shrimp", "Mint", "Lettuce", "Vermicelli"],
@@ -67,8 +67,8 @@
       "author": 7
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-7.png",
       "title": "Shawarma",
       "ingredients": [
@@ -84,8 +84,8 @@
       "author": 8
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-8.png",
       "title": "Pavlova",
       "ingredients": ["Egg Whites", "Sugar", "Whipped Cream", "Fresh Berries"],
@@ -95,8 +95,8 @@
       "author": 9
     },
     {
-      "liked": "false",
-      "bookmarked": "false",
+      "liked": false,
+      "bookmarked": false,
       "image": "../src/assets/img/image-9.png",
       "title": "Caprese Salad",
       "ingredients": ["Tomatoes", "Mozzarella", "Basil", "Olive Oil"],
@@ -106,8 +106,8 @@
       "author": 3
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-10.png",
       "title": "Stuffed Mushrooms",
       "ingredients": ["Mushrooms", "Cream Cheese", "Parmesan Cheese", "Garlic"],
@@ -117,8 +117,8 @@
       "author": 2
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-11.png",
       "title": "Chicken Tikka Masala",
       "ingredients": ["Chicken", "Yogurt", "Tomato Sauce", "Spices"],
@@ -128,8 +128,8 @@
       "author": 0
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-12.png",
       "title": "Baklava",
       "ingredients": ["Phyllo Dough", "Nuts", "Honey", "Butter"],
@@ -139,8 +139,8 @@
       "author": 1
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-13.png",
       "title": "Quinoa Salad",
       "ingredients": ["Quinoa", "Cucumber", "Tomato", "Mint", "Feta Cheese"],
@@ -150,8 +150,8 @@
       "author": 5
     },
     {
-      "liked": "false",
-      "bookmarked": "false",
+      "liked": false,
+      "bookmarked": false,
       "image": "../src/assets/img/image-14.png",
       "title": "Deviled Eggs",
       "ingredients": ["Eggs", "Mayonnaise", "Mustard", "Paprika"],
@@ -161,8 +161,8 @@
       "author": 9
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-15.png",
       "title": "Spaghetti Carbonara",
       "ingredients": ["Spaghetti", "Eggs", "Pancetta", "Parmesan Cheese"],
@@ -172,8 +172,8 @@
       "author": 7
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-16.png",
       "title": "Tiramisu",
       "ingredients": [
@@ -188,8 +188,8 @@
       "author": 6
     },
     {
-      "liked": "false",
-      "bookmarked": "true",
+      "liked": false,
+      "bookmarked": true,
       "image": "../src/assets/img/image-17.png",
       "title": "Thai Mango Salad",
       "ingredients": ["Mango", "Carrot", "Red Pepper", "Peanuts", "Lime Juice"],
@@ -199,8 +199,8 @@
       "author": 4
     },
     {
-      "liked": "false",
-      "bookmarked": "true",
+      "liked": false,
+      "bookmarked": true,
       "image": "../src/assets/img/image-18.png",
       "title": "Crab Cakes",
       "ingredients": [
@@ -216,8 +216,8 @@
       "author": 2
     },
     {
-      "liked": "true",
-      "bookmarked": "true",
+      "liked": true,
+      "bookmarked": true,
       "image": "../src/assets/img/image-19.png",
       "title": "Spinach and Artichoke Dip",
       "ingredients": [
@@ -233,8 +233,8 @@
       "author": 0
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-20.png",
       "title": "Baklava",
       "ingredients": ["Phyllo Dough", "Nuts", "Honey", "Butter"],
@@ -244,8 +244,8 @@
       "author": 3
     },
     {
-      "liked": "false",
-      "bookmarked": "true",
+      "liked": false,
+      "bookmarked": true,
       "image": "../src/assets/img/image-21.png",
       "title": "Falafel",
       "ingredients": [
@@ -262,8 +262,8 @@
       "author": 0
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-22.png",
       "title": "Hummus",
       "ingredients": [
@@ -279,8 +279,8 @@
       "author": 8
     },
     {
-      "liked": "true",
-      "bookmarked": "false",
+      "liked": true,
+      "bookmarked": false,
       "image": "../src/assets/img/image-23.png",
       "title": "Tabbouleh",
       "ingredients": [
