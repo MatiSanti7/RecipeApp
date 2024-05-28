@@ -7,6 +7,8 @@ import AddMenu from "./components/AddMenu";
 import SearchMenu from "./components/SearchMenu";
 import CategoryPage from "./components/Home/CategoryPage";
 import Profile from "./components/Profile";
+import Recipe from "./components/Recipe";
+import dataRecipe from "./assets/data/recipes.json";
 
 function App() {
   return (
@@ -17,8 +19,12 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/add-menu" element={<AddMenu />} />
         <Route path="/search-menu" element={<SearchMenu />} />
-        <Route path="/category/:category" Component={CategoryPage} />
+        <Route path="/category/:category" element={<CategoryPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/recipe/:recipeId"
+          element={<Recipe recipes={dataRecipe.recipes} />}
+        />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
