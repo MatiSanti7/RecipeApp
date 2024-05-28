@@ -1,9 +1,27 @@
 import Nav from "./Nav";
 import Footer from "./Footer";
-import Recipes from "../assets/data/recipes.json";
+import RecipesData from "../assets/data/recipes.json";
 import User from "../assets/data/users.json";
+import { useState } from "react";
 
 const Profile = () => {
+  const [activeTab, setActiveTab] = useState("Recipes");
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+  };
+
+  const filteredRecipes = RecipesData.recipes.filter((recipe) => {
+    if (activeTab === "Recipes") {
+      return recipe.author === 0;
+    } else if (activeTab === "Liked Recipes") {
+      return recipe.liked === true;
+    } else if (activeTab === "Bookmarked Recipes") {
+      return recipe.bookmarked === true;
+    }
+    return true;
+  });
+
   return (
     <div>
       <Nav></Nav>
@@ -40,44 +58,59 @@ const Profile = () => {
           <h1 className="text-4xl">Your Recipes !!!</h1>
         </div>
         <ul className="flex gap-16 text-xl font-medium">
-          <a href="" className="myRecipes ">
-            <li className="text-[#EFC81A]">Recipes</li>
-          </a>
-          <a href="" className="likedRecipes active">
-            <li>Liked Recipes</li>
-          </a>
-          <a href="" className="bookmarkedRecipes">
-            <li>Bookmarked Recipes</li>
-          </a>
+          <li
+            onClick={() => handleTabClick("Recipes")}
+            className={`${
+              activeTab === "Recipes" ? "text-[#EFC81A]" : ""
+            } cursor-pointer hover:text-[#EFC81A]`}
+          >
+            Recipes
+          </li>
+          <li
+            onClick={() => handleTabClick("Liked Recipes")}
+            className={`${
+              activeTab === "Liked Recipes" ? "text-[#EFC81A]" : ""
+            } cursor-pointer hover:text-[#EFC81A]`}
+          >
+            Liked Recipes
+          </li>
+          <li
+            onClick={() => handleTabClick("Bookmarked Recipes")}
+            className={`${
+              activeTab === "Bookmarked Recipes" ? "text-[#EFC81A]" : ""
+            } cursor-pointer hover:text-[#EFC81A]`}
+          >
+            Bookmarked Recipes
+          </li>
         </ul>
         <hr className="h-1 w-full bg-[#EFC81A] my-10" />
         <div className="w-full">
-          {Recipes.recipes.map((recipe, key) => {
-            if (recipe.author == 0) {
-              return (
-                <div className="flex gap-10 mb-10" key={key}>
-                  <div className="w-1/4 h-72 bg-[#F6F6F6] border-2 border-[#00000020] rounded-md flex items-center justify-center">
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      className="object-cover w-full h-full rounded-md"
-                    />
+          {filteredRecipes.map((recipe, key) => {
+            return (
+              <div className="flex gap-10 mb-10" key={key}>
+                <div className="w-1/4 h-72 bg-[#F6F6F6] border-2 border-[#00000020] rounded-md flex items-center justify-center">
+                  <img
+                    src={recipe.image}
+                    alt={recipe.title}
+                    className="object-cover w-full h-full rounded-md"
+                  />
+                </div>
+                <div className="flex flex-col justify-between w-3/4 p-4 my-4">
+                  <div className="flex flex-col gap-3">
+                    <h2 className="text-2xl font-semibold">{recipe.title}</h2>
+                    <ul className="flex flex-wrap gap-4">
+                      {recipe.ingredients.map((ingredient, index) => (
+                        <li
+                          key={index}
+                          className="text-xl font-normal bg-[#efc81a67] py-1 px-3 rounded-2xl"
+                        >
+                          {ingredient}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-lg">{recipe.description}</p>
                   </div>
-                  <div className="flex flex-col justify-between w-3/4 p-4 my-4">
-                    <div className="flex flex-col gap-3">
-                      <h2 className="text-2xl font-semibold">{recipe.title}</h2>
-                      <ul className="flex flex-wrap gap-4">
-                        {recipe.ingredients.map((ingredient, index) => (
-                          <li
-                            key={index}
-                            className="text-xl font-normal bg-[#efc81a67] py-1 px-3 rounded-2xl"
-                          >
-                            {ingredient}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="text-lg">{recipe.description}</p>
-                    </div>
+                  {recipe.author === 0 && (
                     <div className="flex gap-4">
                       <button className="bg-[#EFC81A] py-2 px-5 rounded-md text-white">
                         Edit Menu
@@ -86,10 +119,10 @@ const Profile = () => {
                         Delete Menu
                       </button>
                     </div>
-                  </div>
+                  )}
                 </div>
-              );
-            }
+              </div>
+            );
           })}
         </div>
       </section>
