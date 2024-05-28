@@ -146,6 +146,7 @@ const Home = () => {
           </div>
           <div className="flex items-center justify-between">
             <Link
+              onClick={scrollToTop}
               to="/category/salad"
               className="flex flex-col gap-4 hover:text-[#EFC81A] "
             >
@@ -153,6 +154,7 @@ const Home = () => {
               <small className="text-2xl text-center">Salads</small>
             </Link>
             <Link
+              onClick={scrollToTop}
               to="/category/appetizer"
               className="flex flex-col gap-4 hover:text-[#EFC81A]"
             >
@@ -160,6 +162,7 @@ const Home = () => {
               <small className="text-2xl text-center">Appetizer</small>
             </Link>
             <Link
+              onClick={scrollToTop}
               to="/category/maincourse"
               className="flex flex-col gap-4 hover:text-[#EFC81A]"
             >
@@ -167,6 +170,7 @@ const Home = () => {
               <small className="text-2xl text-center">Main Course</small>
             </Link>
             <Link
+              onClick={scrollToTop}
               to="/category/dessert"
               className="flex flex-col gap-4 hover:text-[#EFC81A]"
             >
@@ -182,6 +186,7 @@ const Home = () => {
           </div>
           <div className="flex items-center justify-between">
             <Link
+              onClick={scrollToTop}
               to="/category/europe"
               className="flex flex-col gap-4  hover:text-[#EFC81A]"
             >
@@ -189,6 +194,7 @@ const Home = () => {
               <small className="text-2xl text-center">Europe</small>
             </Link>
             <Link
+              onClick={scrollToTop}
               to="/category/america"
               className="flex flex-col gap-4  hover:text-[#EFC81A]"
             >
@@ -196,6 +202,7 @@ const Home = () => {
               <small className="text-2xl text-center">America</small>
             </Link>
             <Link
+              onClick={scrollToTop}
               to="/category/asia"
               className="flex flex-col gap-4  hover:text-[#EFC81A]"
             >
@@ -203,6 +210,7 @@ const Home = () => {
               <small className="text-2xl text-center">Asia</small>
             </Link>
             <Link
+              onClick={scrollToTop}
               to="/category/middleeast"
               className="flex flex-col gap-4  hover:text-[#EFC81A]"
             >
