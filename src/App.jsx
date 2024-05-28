@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LogIn from "./components/LogIn";
-import Home from "./components/Home/Home";
+import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import AddMenu from "./components/AddMenu";
 import SearchMenu from "./components/SearchMenu";
-import CategoryPage from "./components/Home/CategoryPage";
+import CategoryPage from "./components/Category/CategoryPage";
 import Profile from "./components/Profile";
 import Recipe from "./components/Recipe";
 import dataRecipe from "./assets/data/recipes.json";

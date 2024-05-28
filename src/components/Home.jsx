@@ -1,6 +1,6 @@
-import Nav from "../Nav";
-import Footer from "../Footer";
-import "../styles/home.css";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import "./styles/home.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -88,11 +88,11 @@ const Home = () => {
             <div className="w-1 h-12 bg-[#EFC81A]"></div>
             <h2 className="text-4xl">Dish Of The Day</h2>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-16">
             <div className="relative w-1/3 image-section">
               <img src="./src/assets/img/image-2.png" alt="" />
             </div>
-            <div className="flex flex-col items-start gap-6">
+            <div className="flex flex-col items-start gap-6 w-[650px]">
               <p className="text-[40px] font-medium">
                 Healthy Bites:
                 <br />
@@ -103,7 +103,7 @@ const Home = () => {
                 {`"`}Quick + Easy Veggie Delight Sandwich <br /> - Elevate Your
                 Lunch in Minutes!{`"`}
               </p>
-              <button className="border-2 border-[#EFC81A] px-10 py-2 rounded-full text-[#EFC81A] hover:bg-[#EFC81A] hover:text-white transition-all duration-300">
+              <button className="border-2 border-[#EFC81A] px-10 py-2 rounded-full text-[#EFC81A] hover:bg-[#EFC81A] hover:text-white transition-all duration-300 text-2xl">
                 Explore More
               </button>
             </div>
@@ -114,8 +114,8 @@ const Home = () => {
             <div className="w-1 h-12 bg-[#EFC81A]"></div>
             <h2 className="text-4xl">Popular For You !</h2>
           </div>
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col items-start gap-6">
+          <div className="flex items-center justify-between gap-16">
+            <div className="flex flex-col items-start w-[770px] gap-6">
               <p className="text-[40px] font-medium">
                 Tropical Paradise Crunch:
                 <br /> Dive into a Refreshing Salad Oasis of <br /> Exotic
@@ -127,7 +127,7 @@ const Home = () => {
                 refreshing salad with exotic delights in every bite!{`"`}
               </p>
               <div className="flex justify-end w-full">
-                <button className=" border-2 border-[#EFC81A] px-10 py-2 rounded-full text-[#EFC81A] hover:bg-[#EFC81A] hover:text-white transition-all duration-300">
+                <button className=" border-2 border-[#EFC81A] px-10 py-2 rounded-full text-[#EFC81A] hover:bg-[#EFC81A] hover:text-white transition-all duration-300 text-2xl">
                   Explore More
                 </button>
               </div>
@@ -144,7 +144,7 @@ const Home = () => {
               Check Out Other Recipes Of Your Choice !
             </h2>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between">
             <Link
               onClick={scrollToTop}
               to="/category/salad"
@@ -184,7 +184,7 @@ const Home = () => {
             <div className="w-1 h-12 bg-[#EFC81A]"></div>
             <h2 className="text-4xl">Check Out By Region !</h2>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between">
             <Link
               onClick={scrollToTop}
               to="/category/europe"
