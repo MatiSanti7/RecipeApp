@@ -7,8 +7,12 @@ import users from "../assets/data/users.json";
 const recipesPerPage = 7;
 const SearchMenu = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchTermConfirmed, setSearchTermConfirmed] = useState("");
+  const [searchTerm, setSearchTerm] = useState(() => {
+    return localStorage.getItem("searchQuery") || "";
+  });
+  const [searchTermConfirmed, setSearchTermConfirmed] = useState(() => {
+    return localStorage.getItem("searchQuery") || "";
+  });
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const sectionRef = useRef(null);
 
@@ -60,6 +64,7 @@ const SearchMenu = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setSearchTermConfirmed(searchTerm);
+    localStorage.setItem("searchQuery", searchTerm);
   };
 
   return (
@@ -90,13 +95,13 @@ const SearchMenu = () => {
         <div className="flex flex-col gap-8">
           {currentRecipes.map((recipe, key) => {
             return (
-              <div key={key} className="flex h-56 gap-16">
+              <div key={key} className="flex gap-16">
                 <img
                   src={recipe.image}
                   alt={recipe.title}
-                  className="object-cover w-1/5 rounded-md"
+                  className="object-cover w-1/5 h-56 rounded-md"
                 />
-                <div className="flex flex-col justify-between 4/5">
+                <div className="flex flex-col justify-between w-4/5">
                   <div className="flex flex-col gap-3">
                     <h2 className="mt-2 text-3xl font-medium">
                       {recipe.title} Made By
@@ -139,7 +144,7 @@ const SearchMenu = () => {
             );
           })}
         </div>
-        <div className="flex flex-col items-center justify-between gap-6 py-10 md:flex-row md:gap-0">
+        <div className="flex flex-col items-center justify-between gap-6 pt-10 md:flex-row md:gap-0">
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
