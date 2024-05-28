@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import recipesData from "../assets/data/recipes.json";
@@ -7,21 +8,16 @@ import users from "../assets/data/users.json";
 const recipesPerPage = 4;
 const SearchMenu = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState(() => {
-    return localStorage.getItem("searchQuery") || "";
-  });
-  const [searchTermConfirmed, setSearchTermConfirmed] = useState(() => {
-    return localStorage.getItem("searchQuery") || "";
-  });
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem("searchQuery") || ""
+  );
+  const [searchTermConfirmed, setSearchTermConfirmed] = useState(
+    localStorage.getItem("searchQuery") || ""
+  );
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const searchQuery = localStorage.getItem("searchQuery");
-    if (searchQuery) {
-      setSearchTerm(searchQuery);
-      setSearchTermConfirmed(searchQuery);
-    }
     const filteredRecipes = recipesData.recipes.filter((recipe) => {
       return (
         recipe.title &&
@@ -34,9 +30,9 @@ const SearchMenu = () => {
 
   const indexOfLast = currentPage * recipesPerPage;
   const indexOfFirst = indexOfLast - recipesPerPage;
-  let currentRecipes = filteredRecipes.slice(indexOfFirst, indexOfLast);
+  const currentRecipes = filteredRecipes.slice(indexOfFirst, indexOfLast);
 
-  const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage) - 1;
+  const totalPages = Math.ceil(filteredRecipes.length / recipesPerPage);
 
   const scrollToTop = () => {
     sectionRef.current.scrollIntoView({ behavior: "smooth" });
@@ -93,61 +89,61 @@ const SearchMenu = () => {
         </form>
         <hr className="h-1 w-full bg-[#EFC81A] my-12" />
         <div className="flex flex-col gap-8">
-          {currentRecipes.map((recipe, key) => {
-            return (
-              <div key={key} className="flex gap-16">
+          {currentRecipes.map((recipe, key) => (
+            <div key={key} className="flex gap-16">
+              <div className="w-1/5 h-56">
                 <img
                   src={recipe.image}
                   alt={recipe.title}
-                  className="object-cover w-1/5 h-56 rounded-md"
+                  className="object-cover w-full h-full rounded-md"
                 />
-                <div className="flex flex-col justify-between w-4/5">
-                  <div className="flex flex-col gap-3">
-                    <h2 className="mt-2 text-3xl font-medium">
-                      {recipe.title} Made By
+              </div>
+              <div className="flex flex-col justify-between w-4/5">
+                <div className="flex flex-col gap-3">
+                  <Link to={`/recipe/${recipe.id}`} onClick={scrollToTop}>
+                    <h2 className="mt-2 text-3xl font-medium hover:underline hover:underline-offset-8">
+                      {recipe.title} <span className="text-xl">Made By</span>
                       <span className="text-[#EFC81A]">
-                        {" " + users[recipe.author].Name}
+                        {" " + (users[recipe.author]?.Name || "Unknown Author")}
                       </span>
                     </h2>
-                    <ul className="flex flex-wrap gap-2">
-                      {recipe.ingredients.map((i, index) => {
-                        return (
-                          <li
-                            key={index}
-                            className="text-xl font-normal bg-[#efc81a67] py-1 px-3 rounded-2xl"
-                          >
-                            {i}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                    <p className="text-lg">{recipe.description}</p>
+                  </Link>
+                  <ul className="flex flex-wrap gap-2">
+                    {recipe.ingredients.map((i, index) => (
+                      <li
+                        key={index}
+                        className="text-xl font-normal bg-[#efc81a67] py-1 px-3 rounded-2xl"
+                      >
+                        {i}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-lg">{recipe.description}</p>
+                </div>
+                <div className="flex gap-10 mt-8">
+                  <div className="flex items-center gap-2 text-xl">
+                    <i
+                      className={`cursor-pointer fa-heart ${
+                        recipe.liked ? "fa-solid text-red-600" : "fa-regular"
+                      }`}
+                    ></i>
+                    <small>Like Recipe</small>
                   </div>
-                  <div className="flex gap-10 mt-8">
-                    <div className="flex items-center gap-2 text-xl">
-                      <i
-                        className={`cursor-pointer fa-heart ${
-                          recipe.liked ? "fa-solid text-red-600" : "fa-regular"
-                        }`}
-                      ></i>
-                      <small>Like Recipe</small>
-                    </div>
-                    <div className="flex items-center gap-2 text-xl">
-                      <i
-                        className={`fa fa-bookmark ${
-                          recipe.bookmarked
-                            ? "fa-solid text-[#EFC81A]"
-                            : "fa-regular"
-                        }  cursor-pointer`}
-                        aria-hidden="true"
-                      ></i>
-                      <small>Bookmark Recipe</small>
-                    </div>
+                  <div className="flex items-center gap-2 text-xl">
+                    <i
+                      className={`fa fa-bookmark ${
+                        recipe.bookmarked
+                          ? "fa-solid text-[#EFC81A]"
+                          : "fa-regular"
+                      } cursor-pointer`}
+                      aria-hidden="true"
+                    ></i>
+                    <small>Bookmark Recipe</small>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
         <div className="flex flex-col items-center justify-between gap-6 pt-10 md:flex-row md:gap-0">
           <button
@@ -168,8 +164,8 @@ const SearchMenu = () => {
                   className={`2xl:text-2xl md:text-lg text-xl w-10 h-10 ${
                     currentPage === index + 1
                       ? "font-bold bg-[#EFC81A] text-white rounded-md"
-                      : "font-normal "
-                  } `}
+                      : "font-normal"
+                  }`}
                 >
                   {index + 1}
                 </button>
