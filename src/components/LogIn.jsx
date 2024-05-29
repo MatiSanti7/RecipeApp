@@ -14,8 +14,14 @@ const LogIn = () => {
     );
     if (verifyUser && tAC) {
       navigate("/home");
-    } else {
+    }
+    if (!verifyUser) {
       alert("Email or Password is incorrect");
+    }
+    if (!tAC) {
+      alert("You must accept the terms and conditions");
+    } else {
+      alert("Some fields are empty");
     }
   };
 
