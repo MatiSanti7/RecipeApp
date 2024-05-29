@@ -14,12 +14,10 @@ const LogIn = () => {
     );
     if (verifyUser && tAC) {
       navigate("/home");
-    }
-    if (!verifyUser) {
-      alert("Email or Password is incorrect");
-    }
-    if (!tAC) {
-      alert("You must accept the terms and conditions");
+    } else if (!verifyUser || !tAC) {
+      alert(
+        "Email or Password is incorrect or You must accept the terms and conditions"
+      );
     } else {
       alert("Some fields are empty");
     }
