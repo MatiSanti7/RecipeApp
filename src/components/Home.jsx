@@ -46,7 +46,7 @@ const Home = () => {
     <div>
       <Nav />
       <div className="w-5/6 mx-auto">
-        <head className="grid h-screen grid-cols-2 gap-24">
+        <header className="grid h-screen grid-cols-2 gap-24">
           <div className="flex flex-col justify-center gap-16">
             <div className="flex items-end">
               <h1 className="text-7xl text-balance text-[#2E266F] leading-tight">
@@ -82,7 +82,7 @@ const Home = () => {
               className="object-cover h-2/3"
             />
           </div>
-        </head>
+        </header>
         <section className="mb-52">
           <div className="flex items-center gap-5 mb-10">
             <div className="w-1 h-12 bg-[#EFC81A]"></div>
