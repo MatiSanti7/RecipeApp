@@ -16,11 +16,11 @@ const Category = ({ category }) => {
     category == "asia" ||
     category == "middleeast";
   if (isCategoryRegion) {
-    recipes = recipesData.recipes.filter((r) => {
+    recipes = recipesData.filter((r) => {
       return r.region == category;
     });
   } else {
-    recipes = recipesData.recipes.filter((r) => {
+    recipes = recipesData.filter((r) => {
       return r.category == category;
     });
   }

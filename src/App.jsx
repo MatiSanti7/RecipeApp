@@ -23,7 +23,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route
           path="/recipe/:recipeId"
-          element={<Recipe recipes={dataRecipe.recipes} />}
+          element={<Recipe recipes={dataRecipe} />}
         />
         <Route path="/signup" element={<SignUp />} />
       </Routes>

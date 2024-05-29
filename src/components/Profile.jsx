@@ -11,7 +11,7 @@ const Profile = () => {
     setActiveTab(tabName);
   };
 
-  const filteredRecipes = RecipesData.recipes.filter((recipe) => {
+  const filteredRecipes = RecipesData.filter((recipe) => {
     if (activeTab === "Recipes") {
       return recipe.author === 0;
     } else if (activeTab === "Liked Recipes") {

@@ -12,8 +12,7 @@ const Recipe = ({ recipes }) => {
   const recipe = recipes.find((recipe) => recipe.id === parseInt(recipeId));
 
   const countRecipes = (author) => {
-    return dataRecipes.recipes.filter((recipe) => recipe.author === author)
-      .length;
+    return dataRecipes.filter((recipe) => recipe.author === author).length;
   };
 
   return (

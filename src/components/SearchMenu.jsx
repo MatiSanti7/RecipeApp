@@ -18,7 +18,7 @@ const SearchMenu = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const filteredRecipes = recipesData.recipes.filter((recipe) => {
+    const filteredRecipes = recipesData.filter((recipe) => {
       return (
         recipe.title &&
         recipe.title.toLowerCase().includes(searchTermConfirmed.toLowerCase())
